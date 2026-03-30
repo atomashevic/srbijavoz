@@ -79,12 +79,22 @@ On the Novi Sad - Petrovaradin corridor, treat recurring bus-service notices as 
 
 ## Answer Format
 
-Every answer should include:
+Default to a short, rider-friendly summary.
 
-- disruption type
-- affected train, station, or route if present
-- the short phrase that triggered the classification
-- whether the result came from a live notice or timetable metadata
+Lead with the practical answer in plain language, for example:
+- `No current issue found for Novi Sad -> Beograd.`
+- `There is an issue on Novi Sad -> Beograd this morning.`
+- `Only a recurring bus-transfer notice is present, no fresh disruption found.`
+
+Then include only the useful operational details:
+- whether there is a current issue or not
+- affected route / train / departure times if known
+- whether it looks current today, ongoing, or just a recurring timetable arrangement
+- what the passenger should do, if obvious, for example use replacement bus, expect delay, or check the next departure
+
+Do not include classifier jargon like `disruption type` unless the user asks for it.
+Do not quote trigger phrases or explain the internal classification unless the user asks.
+Mention `live notice` versus `recurring timetable notice` only when it helps disambiguate whether the issue is fresh.
 
 If nothing relevant appears, say that no matching current notice was found.
 
