@@ -23,24 +23,6 @@ Example prompts:
 - "Is there a current cancellation notice for Novi Sad trains?"
 - "Check whether the Petrovaradin to Novi Sad bus notice is just regular service info"
 
-## Run the bundled script directly
-
-If you want to use the scraper outside the agent flow:
-
-```bash
-python3 scripts/srbvoz_scraper.py --query "kašnjenje" --limit 20
-python3 scripts/srbvoz_scraper.py --station "Beograd"
-python3 scripts/srbvoz_scraper.py --timetable-info
-```
-
-Useful options:
-
-- `--query` filters notices by substring
-- `--limit` limits how many notices are returned
-- `--station` resolves station autocomplete matches
-- `--timetable-info` fetches timetable page metadata
-- `--no-fallback` disables HTML fallback behavior
-
 ## Install in Codex
 
 ```bash
@@ -102,16 +84,20 @@ Why this is good:
 - separates facts from interpretation
 - avoids internal classification language unless the user asks for it
 
-## Notes
+## Run the bundled script directly
 
-- On the Petrovaradin - Novi Sad centar corridor, the bus notice is recurring service information.
-- Do not treat that notice as a fresh disruption unless the notice explicitly says service changed, stopped, or was canceled.
-- If the Srbija Voz site changes, update `scripts/srbvoz_scraper.py` first.
-
-## Packaging
+If you want to use the scraper outside the agent flow:
 
 ```bash
-python3 ~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py \
-  /home/atomasevic/.openclaw/workspace/skills/srbijavoz \
-  /home/atomasevic/.openclaw/workspace/dist
+python3 scripts/srbvoz_scraper.py --query "kašnjenje" --limit 20
+python3 scripts/srbvoz_scraper.py --station "Beograd"
+python3 scripts/srbvoz_scraper.py --timetable-info
 ```
+
+Useful options:
+
+- `--query` filters notices by substring
+- `--limit` limits how many notices are returned
+- `--station` resolves station autocomplete matches
+- `--timetable-info` fetches timetable page metadata
+- `--no-fallback` disables HTML fallback behavior
