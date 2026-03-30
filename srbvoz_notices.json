@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-03-30T09:07:28.561914+00:00",
+  "source": "api-first",
+  "api_url": "https://www.srbvoz.rs/wp-json/wp/v2/info_post?per_page=100",
+  "html_url": "https://www.srbvoz.rs/redvoznje",
+  "timetable_url": "https://w3.srbvoz.rs/redvoznje/info/sr",
+  "station_api_url": "https://w3.srbvoz.rs/redvoznje/api/stanica/",
+  "query": "Petrovaradin",
+  "station_query": null,
+  "notices": [
+    {
+      "id": 33885,
+      "date": "30.03.2026",
+      "title": "Privremena izmena saobraćaja vozova na relaciji Petrovaradin – Beograd centar – Petrovaradin",
+      "content": "08:21 ,,Srbijavoz” a.d. obaveštava korisnike usluga da je dana 30.03.2026. godine, došlo do izmene saobraćaja vozova Petrovaradin – Beograd centar – Petrovaradin. Voz koji polazi iz Petrovaradina za Beograd centar u 07:20 časova i voz koji polazi iz Beograd centra za Petrovaradin u 08:30 časova, neće saobraćati na delu relacije Batajnica – Beograd centar – Batajnica zbog smetnje na infrastrukturnim kapacitetima. Zahvaljujemo se putnicima na razumevanju.",
+      "link": "https://www.srbvoz.rs/info_post/privremena-izmena-saobracaja-vozova-na-relaciji-petrovaradin-beograd-centar-petrovaradin/"
+    },
+    {
+      "id": 33880,
+      "date": "30.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-250/"
+    },
+    {
+      "id": 33856,
+      "date": "29.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-249/"
+    },
+    {
+      "id": 33831,
+      "date": "28.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-248/"
+    },
+    {
+      "id": 33803,
+      "date": "27.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-247/"
+    },
+    {
+      "id": 33766,
+      "date": "26.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-246/"
+    },
+    {
+      "id": 33764,
+      "date": "26.03.2026",
+      "title": "Izmena saobraćaja voza na relaciji Petrovaradin-Beograd centar-Petrovaradin",
+      "content": "04:58 ,,Srbijavoz” a.d. obaveštava korisnike usluga da je dana 26.03.2026. godine, došlo do izmene saobraćaja vozova. Voz koji polazi iz Petrovaradina za Beograd centar u 04:20 časova i voz koji polazi iz Beograd centra za Petrovaradin u 05:30 časova, neće saobraćati iz tehnickih razloga. Zahvaljujemo se putnicima na razumevanju.",
+      "link": "https://www.srbvoz.rs/info_post/izmena-saobracaja-voza-na-relaciji-petrovaradin-beograd-centar-petrovaradin-2/"
+    },
+    {
+      "id": 33749,
+      "date": "25.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-245/"
+    },
+    {
+      "id": 33738,
+      "date": "24.03.2026",
+      "title": "Autobuski red vožnje na relaciji Petrovaradin-Novi Sad centar-Petrovaradin",
+      "content": "Putnici koji putuju vozovima za prevoz putnika iz/za pravca Subotice, Beograd Centra, Šida, Sremske Mitrovice i Užica, koji po važećoj organizaciji saobraćaju do/od stanice Petrovaradin, osim redovnog gradskog prevoza, mogu da koriste organizovan besplatan autobuski prevoz iz stanice Petrovaradin i iz Novog Sada. Autobusi sa besplatnim prevozom iz centra Novog Sada (Uspenska ulica-stajalište u Šafarikovoj) će polaziti u: 4:00*; 4:36*; 5:00; 5:21*; 5:41*; 6:00; 6:26; 7:00; 7:18; 7:35; 8:00; 8:26; 8:38; 9:21; 9:36; 9:41; 10:11; 10:26; 11:00; 11:14; 11:41; 12:00; 12:26; 12:36; 13:00; 13:21; 13:36; 14:00; 14:10; 15:00; 15:10; 15:36; 16:11; 16:26; 17:00; 17:21; 17:40; 18:11; 18:26; 19:00; 19:21; 19:41; 20:00; 20:26; 20:43; 21:00; 21:21; 21:35; 22:11; 22:46; 23:30 časova. Autobusi sa besplatnim prevozom od železničke stanice Petrovaradin (redovno stajalište gradskog prevoza) će polaziti u: 5:35*, 5:55*, 6:09*, 6:31, 6:41, 6:54, 7:30*, 7:49; 8:09, 8:30, 8:39, 8:54, 9:33, 9:49, 10:09, 10:30, 10.54, 11:31, 11:49; 12:09, 12:31, 12:41, 12:54, 13:30, 13:49; 14:04, 14:39, 14:54; 15:31, 15:49; 16:09, 16:39, 16:41, 16:54, 17:20*, 17:49; 18:09, 18:31, 18:41, 19.00, 19:30, 19:49; 20:09, 20:39, 20:54, 21:11, 21:31, 21:49; 22:09, 22:39, 22:54, 23:40, 0:31 časova. *autobus ne saobraća u dane vikenda i državnim praznicima. Vreme putovanja autobusa na relaciji Novi Sad centar – Petrovardin iznosi oko 20 minuta. Mole se putnici da svoje putovanje organizuju prema polascima/dolascima vozova od/do stanice Petrovaradin.",
+      "link": "https://www.srbvoz.rs/info_post/autobuski-red-voznje-na-relaciji-petrovaradin-novi-sad-centar-petrovaradin-244/"
+    },
+    {
+      "id": 33717,
+      "date": "23.03.2026",
+      "title": "Uspostavljen redovan saobraćaj novosadskih vozova",
+      "content": "14:50,,Srbijavoz” a.d. obaveštava korisnike usluga da je dana 23 03.2026. godine,od 14:22 časova uspostavljen redovan saobraćaj vozova. Voz iz Petrovaradina za Beograd centar sa polaskom u 13:20 časova,krenuo je u 14:39 časova sa 79 minuta zakašnjenja. Zahvaljujemo se putnicima na razumevanju.",
+      "link": "https://www.srbvoz.rs/info_post/uspostavljen-redovan-saobracaj-novosadskih-vozova/"
+    },
+    {
+      "id": 33715,
+      "date": "23.03.2026",
+      "title": "izmena saobraćaja voza na novosadskoj pruzi",
+      "content": "14:06 ,,Srbijavoz” a.d. obaveštava korisnike usluga da je dana 23.03.2026. godine, došlo do izmene saobraćaja voza na novosadskoj pruzi. Voz koji je krenuo iz Subotice za Beograd centar u 13:00 časova zbog smetnje na infrastrukturnim kapacitetima u stanici Petrovaradin,imaće izuzetno bavljenje u svim stanicama od Petrovaradina do stanice Beograd centar. Zahvaljujemo se putnicima na razumevanju.",
+      "link": "https://www.srbvoz.rs/info_post/izmena-saobracaja-voza-na-novosadskoj-pruzi-4/"
+    },
+    {
+      "id": 33711,
+      "date": "23.03.2026",
+      "title": "izmena saobraćaja voza na novosadskoj pruzi",
+      "content": "13:20 ,,Srbijavoz” a.d. obaveštava korisnike usluga da je dana 23.03.2026. godine, došlo do izmene saobraćaja voza na novosadskoj pruzi. Voz koji je trebao da krene iz Petrovaradina za Beograd centar u 13:20 časova zbog smetnje na infrastrukturnim kapacitetima u stanici Petrovaradin,od 12:55 časova stoji u stanici. Na lice mesta izlazi komisija IŽS-SV. Očekivano kašnjenje voza je oko 80 minuta. Zahvaljujemo se putnicima na razumevanju.",
+      "link": "https://www.srbvoz.rs/info_post/izmena-saobracaja-vozova-na-novosadskoj-pruzi-16/"
+    }
+  ],
+  "count": 12
+}

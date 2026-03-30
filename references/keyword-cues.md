@@ -32,6 +32,10 @@ Use these cues when classifying notices.
 - autobus
 - prevoz putnika autobusom
 
+## Corridor note
+- On the Petrovaradin - Novi Sad centar - Petrovaradin corridor, the bus notice is recurring service information and is expected to update regularly
+- Do not classify it as a disruption by itself unless a notice explicitly says the bus service changed, stopped, or was canceled
+
 ## Novi Sad - Petrovaradin corridor
 Watch for:
 - Petrovaradin

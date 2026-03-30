@@ -1,5 +1,5 @@
 ---
-name: srbijavoz-scraper
+name: srbijavoz
 description: API-first Srbija Voz scraper for notices, station lookup, and timetable support. Use when asked to check Srbija Voz announcements, train delays, cancellations, stoppages, or bus replacement service on the Novi Sad - Petrovaradin route, or when needing station autocomplete and timetable metadata from the Srbija Voz web app.
 ---
 
@@ -15,7 +15,7 @@ Use the bundled scraper to pull current Srbija Voz notices from the WordPress AP
 - Resolve station names with `api/stanica/`
 - Inspect timetable page metadata
 - Surface disruptions by scanning notice language
-- Focus on the Novi Sad - Petrovaradin corridor when asked
+- Focus on the Novi Sad - Petrovaradin corridor when asked, but treat the bus notice there as recurring service information unless a notice explicitly says it changed
 
 ## Workflow
 
