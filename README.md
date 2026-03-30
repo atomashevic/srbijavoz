@@ -43,3 +43,28 @@ Useful options:
 
 - The Novi Sad - Petrovaradin bus notice is often recurring timetable information.
 - Do not treat that notice as a fresh disruption unless the notice explicitly says service changed, stopped, or was canceled.
+
+## Example of a good user-facing summary
+
+A strong answer should be short, clear, and useful to a passenger first, without classifier jargon.
+
+Example:
+
+```text
+Today on the Novi Sad to Belgrade railway, there was a morning disruption, but not a full-day line shutdown.
+
+What I found:
+- A Petrovaradin ↔ Beograd centar service was disrupted this morning
+- The 07:20 from Petrovaradin to Beograd centar and the 08:30 return did not run on the Batajnica ↔ Beograd centar segment
+- I did not find a broader fresh notice saying the whole Novi Sad ↔ Belgrade corridor is down all day
+
+What this means in practice:
+- There was a real issue this morning on the corridor
+- The line does not appear to be generally suspended for the rest of today, based on the notices I saw
+```
+
+Why this is good:
+- leads with the practical verdict
+- keeps only route and time details that matter
+- separates facts from interpretation
+- avoids internal classification language unless the user asks for it
