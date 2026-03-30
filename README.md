@@ -85,10 +85,8 @@ srbijavoz/
 ├── SKILL.md
 ├── README.md
 ├── .gitignore
-├── scripts/
-│   └── srbvoz_scraper.py
-└── references/
-    └── keyword-cues.md
+├── scripts/srbvoz_scraper.py
+└── references/keyword-cues.md
 ```
 
 ## Notes
