@@ -1,71 +1,104 @@
 ---
 name: srbijavoz
-description: API-first Srbija Voz scraper for notices, station lookup, and timetable support. Use when asked to check Srbija Voz announcements, train delays, cancellations, stoppages, or bus replacement service on the Novi Sad - Petrovaradin route, or when needing station autocomplete and timetable metadata from the Srbija Voz web app.
+description: Check official Srbija Voz notices, station matches, and timetable metadata. Use when verifying live train delays, cancellations, stoppages, or replacement bus service in Serbia.
+license: MIT
+metadata: {"clawdbot":{"emoji":"🚆","requires":{"bins":["python3"]},"os":["linux","darwin"]}}
 ---
 
-# Srbijavoz Scraper
+# Srbija Voz Status
 
-## Overview
+Check official public Srbija Voz passenger-information endpoints and summarize whether a route has a live disruption, a timetable-only change, or no current issue.
 
-Use the bundled scraper to pull current Srbija Voz notices from the WordPress API and resolve station names from the timetable app. Prefer the API over HTML scraping. Use the notice text itself to detect service problems, especially delays, stopped trains, cancellations, and replacement buses.
+## When to Use
 
-## What this skill does
+- The user asks whether a Srbija Voz route currently has delays, cancellations, stoppages, or replacement bus service.
+- The user wants current notices from the official Srbija Voz passenger-information site.
+- The user needs station autocomplete matches from the timetable app.
+- The user wants to confirm whether a notice is a live disruption or recurring timetable information.
+- The user asks specifically about the Novi Sad - Petrovaradin corridor.
 
-- Fetch current notices from `info_post`
-- Resolve station names with `api/stanica/`
-- Inspect timetable page metadata
-- Surface disruptions by scanning notice language
-- Focus on the Novi Sad - Petrovaradin corridor when asked, but treat the bus notice there as recurring service information unless a notice explicitly says it changed
+## Safe Scope
 
-## Workflow
+- Use only the official public passenger-information endpoints bundled in `scripts/srbvoz_scraper.py`.
+- Treat this skill as read-only transit information lookup.
+- Do not log in, solve challenges, bypass limits, or imitate protected user activity.
+- If the public API stops working, use the timetable page fallback only for passive metadata checks.
 
-1. Run the scraper script for current notices.
-2. If the user asks about a station, resolve it through the station API.
-3. Scan titles and contents for disruption keywords.
-4. Classify the result as one of:
-   - delay
-   - stopped / standing still
-   - canceled / not running
-   - operational change
-   - replacement bus service
-   - no disruption found
+## Check Current Notices
 
-## How to run
+Run the bundled script first:
 
-Use the bundled script:
+```bash
+python3 scripts/srbvoz_scraper.py --limit 20
+```
+
+Filter notices when the user mentions a specific issue:
 
 ```bash
 python3 scripts/srbvoz_scraper.py --query "kašnjenje" --limit 20
-python3 scripts/srbvoz_scraper.py --station "Beograd" --timetable-info
+python3 scripts/srbvoz_scraper.py --query "Petrovaradin" --limit 20
 ```
 
-Useful options:
+The output JSON is the source of truth for current notices. Use notice title, content, date, and link in the final answer.
 
-- `--query` filters notices by substring
-- `--limit` limits output size
-- `--station` resolves station autocomplete matches
-- `--timetable-info` fetches timetable page metadata
-- `--no-fallback` disables the HTML fallback
+## Resolve Station Names
 
-## Disruption keyword cues
+When the user gives a partial station name, call the station endpoint through the same script:
 
-Read the notice language carefully. Prioritize these Serbian cues:
+```bash
+python3 scripts/srbvoz_scraper.py --station "Beograd"
+```
 
-- Delay: `kašnjenje`, `kasni`, `zakašnjenje`, `u kašnjenju`
-- Canceled / not running: `neće saobraćati`, `izostaje`, `otkazan`, `otkazuje se`
-- Stopped / held: `stoje vozovi`, `zbog smetnje`, `na licu mesta`, `do daljnjeg`
-- Operational change: `izmena saobraćaja`, `privremena izmena`, `operativna izmena`
-- Replacement bus: `autobuski red vožnje`, `autobus`, `organizovan besplatan prevoz`
-- Novi Sad - Petrovaradin route: scan for `Petrovaradin`, `Novi Sad centar`, `Batajnica`, `Beograd centar` when the user asks about that corridor
+Return the best matching station names and codes. Do not guess station names without checking the API first.
 
-## Output rule
+## Inspect Timetable Metadata
 
-When answering the user, give:
-- the disruption type
-- the train or route if present
-- the key sentence or phrase that triggered the classification
-- whether this looks like a current notice or just timetable metadata
+When the user asks whether something is a timetable artifact rather than a fresh notice, inspect the timetable page metadata:
 
-## Script notes
+```bash
+python3 scripts/srbvoz_scraper.py --timetable-info
+python3 scripts/srbvoz_scraper.py --station "Novi Sad" --timetable-info
+```
 
-The bundled script is the source of truth for current notices and station lookup. If the timetable site changes, update the script first, then adjust this skill if the workflow changes.
+Use this only to support interpretation. Prefer live notices over timetable-page hints.
+
+## Classify the Result
+
+Scan notice titles and bodies for disruption cues. Read `references/keyword-cues.md` when you need the full cue list.
+
+Classify each relevant result as one of:
+
+- `delay`
+- `stopped`
+- `canceled`
+- `operational_change`
+- `replacement_bus_service`
+- `no_disruption_found`
+
+On the Novi Sad - Petrovaradin corridor, treat recurring bus-service notices as timetable information unless the notice explicitly says service changed, stopped, or was canceled.
+
+## Answer Format
+
+Every answer should include:
+
+- disruption type
+- affected train, station, or route if present
+- the short phrase that triggered the classification
+- whether the result came from a live notice or timetable metadata
+
+If nothing relevant appears, say that no matching current notice was found.
+
+## Handle Failures
+
+- If the API request fails, the script can fall back to the public timetable page unless `--no-fallback` is set.
+- If both API and fallback fail, say that the official public endpoints were unavailable at lookup time.
+- If the user asks for exact timetable calculations, explain that this skill only checks public notices, station lookup, and timetable metadata.
+
+## Tips
+
+- Prefer route-specific queries like `Petrovaradin`, `Beograd centar`, or `Novi Sad` over generic searches.
+- Quote the exact Serbian phrase that triggered the classification instead of paraphrasing the whole notice.
+- A recurring bus notice on the Petrovaradin corridor is not enough by itself to claim a fresh disruption.
+- Use `--station` before answering ambiguous station-name questions.
+- Use `--timetable-info` only as supporting evidence, not as the primary source when live notices exist.
+- Keep the final answer short and operational: what happened, where, and whether it appears current.

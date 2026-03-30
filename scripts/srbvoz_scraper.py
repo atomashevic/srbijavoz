@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""API-first Srbija Voz notice scraper.
+"""API-first Srbija Voz public passenger-info client.
 
-Pulls notices from the WordPress REST API used by srbvoz.rs and falls back to the old
-HTML page only if the API request fails.
+Pulls notices from the public WordPress REST API used by srbvoz.rs and falls back to the
+public timetable page only if the API request fails.
 """
 
 from __future__ import annotations
@@ -11,11 +11,18 @@ import argparse
 import html
 import json
 import re
+import ssl
 import sys
 from datetime import datetime, timezone
 from typing import Any
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import HTTPSHandler, OpenerDirector, Request, build_opener
 
-import requests
+try:
+    import certifi
+except ImportError:
+    certifi = None
 
 API_URL = "https://www.srbvoz.rs/wp-json/wp/v2/info_post?per_page=100"
 STATION_API_URL = "https://w3.srbvoz.rs/redvoznje/api/stanica/"
@@ -24,9 +31,9 @@ HTML_URL = "https://www.srbvoz.rs/redvoznje"
 DEFAULT_OUTPUT_PATH = "srbvoz_notices.json"
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36",
-    "Accept": "application/json,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "sr,en-US;q=0.9,en;q=0.8",
+    "User-Agent": "srbijavoz-skill/1.1 (public passenger information client)",
+    "Accept": "application/json, text/html;q=0.9, */*;q=0.8",
+    "Accept-Language": "sr,en;q=0.8",
 }
 
 
@@ -42,10 +49,46 @@ def format_date(iso_date: str) -> str:
     return dt.astimezone().strftime("%d.%m.%Y")
 
 
-def fetch_api_notices(session: requests.Session) -> list[dict[str, Any]]:
-    resp = session.get(API_URL, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
-    items = resp.json()
+def build_http_client() -> OpenerDirector:
+    context = ssl.create_default_context()
+    if certifi is not None:
+        context.load_verify_locations(cafile=certifi.where())
+    return build_opener(HTTPSHandler(context=context))
+
+
+def fetch_text(
+    client: OpenerDirector,
+    url: str,
+    *,
+    params: dict[str, str] | None = None,
+    timeout: int = 30,
+) -> str:
+    if params:
+        url = f"{url}?{urlencode(params)}"
+
+    request = Request(url, headers=HEADERS)
+    try:
+        with client.open(request, timeout=timeout) as response:
+            charset = response.headers.get_content_charset() or "utf-8"
+            return response.read().decode(charset, errors="replace")
+    except HTTPError:
+        raise
+    except URLError:
+        raise
+
+
+def fetch_json(
+    client: OpenerDirector,
+    url: str,
+    *,
+    params: dict[str, str] | None = None,
+    timeout: int = 30,
+) -> Any:
+    return json.loads(fetch_text(client, url, params=params, timeout=timeout))
+
+
+def fetch_api_notices(client: OpenerDirector) -> list[dict[str, Any]]:
+    items = fetch_json(client, API_URL)
 
     notices = []
     for item in items:
@@ -64,37 +107,28 @@ def fetch_api_notices(session: requests.Session) -> list[dict[str, Any]]:
     return notices
 
 
-def fetch_html_fallback(session: requests.Session) -> dict[str, Any]:
-    resp = session.get(HTML_URL, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
+def fetch_html_fallback(client: OpenerDirector) -> dict[str, Any]:
+    page = fetch_text(client, HTML_URL)
     return {
-        "status": resp.status_code,
-        "content_length": len(resp.text),
-        "sample": resp.text[:1000],
+        "status": 200,
+        "content_length": len(page),
+        "sample": page[:1000],
     }
 
 
-def fetch_station_matches(session: requests.Session, term: str) -> list[dict[str, Any]]:
-    resp = session.get(
-        STATION_API_URL,
-        headers=HEADERS,
-        params={"term": term},
-        timeout=30,
-    )
-    resp.raise_for_status()
-    return resp.json()
+def fetch_station_matches(client: OpenerDirector, term: str) -> list[dict[str, Any]]:
+    return fetch_json(client, STATION_API_URL, params={"term": term})
 
 
-def fetch_timetable_page_info(session: requests.Session) -> dict[str, Any]:
-    resp = session.get(TIMETABLE_URL, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
+def fetch_timetable_page_info(client: OpenerDirector) -> dict[str, Any]:
+    page = fetch_text(client, TIMETABLE_URL)
     return {
-        "status": resp.status_code,
+        "status": 200,
         "title_hint": "Timetable - Serbian Train",
-        "content_length": len(resp.text),
-        "has_station_api": "/api/stanica/" in resp.text,
-        "has_train_details_api": "/api/vozdetalji1" in resp.text,
-        "sample": resp.text[:1200],
+        "content_length": len(page),
+        "has_station_api": "/api/stanica/" in page,
+        "has_train_details_api": "/api/vozdetalji1" in page,
+        "sample": page[:1200],
     }
 
 
@@ -120,11 +154,11 @@ def main() -> int:
     args = parse_args()
 
     print("=" * 60)
-    print("Srbija Voz Notice Scraper")
+    print("Srbija Voz Public Status Client")
     print(f"Time: {datetime.now().isoformat()}")
     print("=" * 60)
 
-    session = requests.Session()
+    client = build_http_client()
     output: dict[str, Any] = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "source": "api-first",
@@ -138,7 +172,7 @@ def main() -> int:
 
     try:
         print("\n1. Fetching notices from WordPress REST API...")
-        notices = fetch_api_notices(session)
+        notices = fetch_api_notices(client)
         notices = [n for n in notices if matches_query(n, args.query)]
         if args.limit and args.limit > 0:
             notices = notices[: args.limit]
@@ -151,7 +185,7 @@ def main() -> int:
 
         if args.station:
             print("\n2. Resolving station autocomplete matches...")
-            station_matches = fetch_station_matches(session, args.station)
+            station_matches = fetch_station_matches(client, args.station)
             output["station_matches"] = station_matches
             print(f"Found {len(station_matches)} station matches for {args.station!r}.")
             for station in station_matches[:5]:
@@ -159,7 +193,7 @@ def main() -> int:
 
         if args.timetable_info:
             print("\n3. Fetching timetable page metadata...")
-            timetable_info = fetch_timetable_page_info(session)
+            timetable_info = fetch_timetable_page_info(client)
             output["timetable_info"] = timetable_info
             print(f"Timetable page fetched, length: {timetable_info['content_length']}")
 
@@ -173,7 +207,7 @@ def main() -> int:
 
         print("\n2. Falling back to HTML page...")
         try:
-            fallback = fetch_html_fallback(session)
+            fallback = fetch_html_fallback(client)
             output["fallback"] = fallback
             print(f"Fallback succeeded, page length: {fallback['content_length']}")
         except Exception as html_error:
