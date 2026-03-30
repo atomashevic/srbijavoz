@@ -1,6 +1,8 @@
-# Srbijavoz
+# Srbijavoz Agent Skill
 
-Tiny rail oracle, slightly dramatic, occasionally useful.
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/86769c9c-2d6b-4349-a3ab-11a647dc7189" />
+
+Helps your AI agent navigate the magical world of SrbijaVoz!
 
 This skill watches Srbija Voz notices, checks station autocomplete, and pulls timetable metadata from the web app. It is built for the moments when you want to know whether your train is delayed, stopped, canceled, or quietly replaced by a bus that was absolutely not part of your original life plan.
 
@@ -10,7 +12,6 @@ This skill watches Srbija Voz notices, checks station autocomplete, and pulls ti
 - Resolves station names through the timetable app autocomplete API
 - Inspects timetable page metadata
 - Detects disruption language in Serbian notices
-- Treats the Petrovaradin to Novi Sad centar bus notices as recurring service info, not a disruption by themselves
 
 ## When to use it
 
@@ -20,7 +21,7 @@ Use this skill when you want to:
 - figure out whether a train is delayed, stopped, canceled, or rerouted
 - inspect the Novi Sad, Petrovaradin, Beograd centar corridor
 - look up stations from partial names
-- see whether a bus replacement notice is just the usual recurring timetable update
+- check Petrovaradin - Novi sad  bus replacement timetables
 
 ## How it works
 
