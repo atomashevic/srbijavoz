@@ -1,109 +1,79 @@
-# Srbijavoz Agent Skill
+# Srbijavoz Skill
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/86769c9c-2d6b-4349-a3ab-11a647dc7189" />
+<img width="640" alt="Srbijavoz skill cover" src="https://github.com/user-attachments/assets/86769c9c-2d6b-4349-a3ab-11a647dc7189" />
 
-Helps your AI agent navigate the magical world of SrbijaVoz!
+Use this skill when you want an agent to check current Srbija Voz notices, look up stations, and quickly tell you whether a train issue is a delay, cancellation, stoppage, operational change, or replacement bus service.
 
-This skill watches Srbija Voz notices, checks station autocomplete, and pulls timetable metadata from the web app. It is built for the moments when you want to know whether your train is delayed, stopped, canceled, or quietly replaced by a bus that was absolutely not part of your original life plan.
+## How to use it
 
-## What it does
-
-- Fetches current notices from the Srbija Voz WordPress API
-- Resolves station names through the timetable app autocomplete API
-- Inspects timetable page metadata
-- Detects disruption language in Serbian notices
-
-## When to use it
-
-Use this skill when you want to:
-
-- check current Srbija Voz announcements
-- figure out whether a train is delayed, stopped, canceled, or rerouted
-- inspect the Novi Sad, Petrovaradin, Beograd centar corridor
-- look up stations from partial names
-- check Petrovaradin - Novi sad  bus replacement timetables
-
-## How it works
-
-The main script is API first.
-
-It reads from:
-
-- notices: `https://www.srbvoz.rs/wp-json/wp/v2/info_post?per_page=100`
-- station autocomplete: `https://w3.srbvoz.rs/redvoznje/api/stanica/`
-- timetable page: `https://w3.srbvoz.rs/redvoznje/info/sr`
-
-It looks for language like:
-
-- `kašnjenje`, `kasni`, `zakašnjenje`
-- `neće saobraćati`, `izostaje`, `otkazan`
-- `stoje vozovi`, `zbog smetnje`, `do daljnjeg`
-- `izmena saobraćaja`, `privremena izmena`
-- `autobuski red vožnje`, `organizovan besplatan prevoz`
-
-## Use it in OpenClaw
-
-If the skill is installed, ask for a train status check in plain language.
+Once the skill is installed, ask in plain language.
 
 Example prompts:
 
-- "Check Srbija Voz for delays on the Petrovaradin to Beograd line"
-- "What happened on my morning train from Petrovaradin to Zemun?"
-- "Is the Novi Sad to Petrovaradin bus notice a disruption or a regular update?"
+- "Check Srbija Voz for delays between Petrovaradin and Beograd centar"
+- "Look up the station name for Bataj"
+- "Is there a current cancellation notice for Novi Sad trains?"
+- "Check whether the Petrovaradin to Novi Sad bus notice is just regular service info"
 
-## Use it in Claude Code
+The skill is built to:
 
-Copy the skill folder into your Claude Code skills location, then point Claude Code at it.
+- pull current notices from the official API
+- resolve station names from partial input
+- classify notice text into a user-friendly disruption type
 
-Suggested copy command:
+## Run the bundled script directly
+
+If you want to use the scraper outside the agent flow:
 
 ```bash
-cp -R /path/to/srbijavoz ~/.claude/skills/
+python3 scripts/srbvoz_scraper.py --query "kašnjenje" --limit 20
+python3 scripts/srbvoz_scraper.py --station "Beograd"
+python3 scripts/srbvoz_scraper.py --timetable-info
 ```
 
-If your Claude Code setup uses a different skills directory, drop the folder there instead. The important part is that the folder contains:
+Useful options:
 
-- `SKILL.md`
-- `scripts/srbvoz_scraper.py`
-- `references/keyword-cues.md`
+- `--query` filters notices by substring
+- `--limit` limits how many notices are returned
+- `--station` resolves station autocomplete matches
+- `--timetable-info` fetches timetable page metadata
+- `--no-fallback` disables HTML fallback behavior
 
-## Use it in Codex
-
-Copy the skill folder into your Codex skills directory.
-
-Suggested copy command:
+## Install in Codex
 
 ```bash
 cp -R /path/to/srbijavoz ~/.codex/skills/
 ```
 
-Then make sure the agent can see the skill name `srbijavoz` and the bundled script.
+After that, the skill can be invoked as `srbijavoz`.
 
-## Repository layout
+## Install in Claude Code
 
-```text
-srbijavoz/
-├── SKILL.md
-├── README.md
-├── .gitignore
-├── scripts/srbvoz_scraper.py
-└── references/keyword-cues.md
+```bash
+cp -R /path/to/srbijavoz ~/.claude/skills/
 ```
+
+If your setup uses a different skills directory, copy the folder there instead.
+
+## What to expect in answers
+
+The skill should return:
+
+- the disruption type
+- the relevant route or station if present
+- the notice language that triggered the classification
+- whether the result comes from a live notice or timetable metadata
 
 ## Notes
 
-- The Petrovaradin to Novi Sad centar bus notice is recurring service information.
-- Do not treat it as a fresh disruption unless a notice explicitly says it changed, stopped, or was canceled.
-- If the timetable site changes, update the script first.
+- On the Petrovaradin - Novi Sad centar corridor, the bus notice is recurring service information.
+- Do not treat that notice as a fresh disruption unless the notice explicitly says service changed, stopped, or was canceled.
+- If the Srbija Voz site changes, update `scripts/srbvoz_scraper.py` first.
 
 ## Packaging
-
-To package the skill for distribution:
 
 ```bash
 python3 ~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/scripts/package_skill.py \
   /home/atomasevic/.openclaw/workspace/skills/srbijavoz \
   /home/atomasevic/.openclaw/workspace/dist
 ```
-
-That produces a `.skill` file you can ship around like a tiny digital train ticket for machines.
